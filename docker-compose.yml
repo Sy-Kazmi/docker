@@ -27,6 +27,10 @@ services:
       - coolify.pullRequestId=0
     container_name: postgres-rgo0g8w-231151856316
   mattermost:
+    ports:
+        - ${APP_PORT}:8065
+        - ${CALLS_PORT}:${CALLS_PORT}/udp
+        - ${CALLS_PORT}:${CALLS_PORT}/tcp
     depends_on:
       - postgres
     image: 'mattermost/${MATTERMOST_IMAGE}:${MATTERMOST_IMAGE_TAG}'
